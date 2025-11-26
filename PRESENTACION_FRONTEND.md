@@ -1,10 +1,10 @@
-# 🖥️ Guion de Presentación Extendido: HydroTech Digital Twin
+# 🖥️ Guion de Presentación Extendido / Presentation Script: HydroTech Digital Twin
 
-Guía completa para tu exposición, incluyendo qué mostrar, qué decir y cómo defender tu proyecto.
+Guía completa bilingüe para tu exposición. / Complete bilingual guide for your presentation.
 
 ---
 
-## 🎯 Diapositiva 1: Título
+## 🎯 Diapositiva 1: Título / Title Slide
 
 ### 🎨 Contenido Visual (Slide)
 *   **Título Grande:** HydroTech Digital Twin
@@ -12,196 +12,230 @@ Guía completa para tu exposición, incluyendo qué mostrar, qué decir y cómo 
 *   **Imagen de Fondo:** Captura de pantalla del Dashboard o del Mapa del invernadero difuminada.
 *   **Datos:** Tu Nombre | Materia: Electiva de Software
 
-### 🗣️ Guion del Orador
+### 🗣️ Guion del Orador / Speaker Script
+
+**🇪🇸 Español:**
 "Buenos días a todos.
 Hoy les presento **HydroTech Digital Twin**, una solución de software full-stack que hemos desarrollado para modernizar la agricultura de precisión.
 Este proyecto no es solo una página web; es una herramienta de gestión que transforma datos crudos y complejos en una experiencia visual intuitiva para el control de cultivos hidropónicos.
 El objetivo fue tomar un modelo de datos teórico y convertirlo en una aplicación funcional que permite a los operarios visualizar su infraestructura, gestionar sus cultivos y monitorear la seguridad en tiempo real."
 
+**🇺🇸 English:**
+"Good morning everyone.
+Today I present **HydroTech Digital Twin**, a full-stack software solution we developed to modernize precision agriculture.
+This project isn't just a webpage; it is a management tool that transforms raw, complex data into an intuitive visual experience for controlling hydroponic crops.
+Our goal was to take a theoretical data model and turn it into a functional application that allows operators to visualize their infrastructure, manage their crops, and monitor security in real-time."
+
 ---
 
-## 💡 Diapositiva 2: El Desafío (Del JSON a la Realidad)
+## 💡 Diapositiva 2: El Desafío / The Challenge
 
 ### 🎨 Contenido Visual (Slide)
 *   **Izquierda:** Icono de archivo JSON 📄 con un fragmento (`"class": "estructura", "posicion_x": 10...`).
 *   **Flecha:** ➡️ "Interpretación de Datos"
 *   **Derecha:** Captura del Mapa Interactivo 🗺️ con las mesas dibujadas.
 
-### 📂 Archivos Clave
-*   `modelo_hidroponico_v2.json` (La fuente de la verdad).
-*   `hydro_back/app/models.py` (Cómo se tradujo a Python/SQL).
+### 📂 Archivos Clave / Key Files
+*   `modelo_hidroponico_v2.json`
+*   `hydro_back/app/models.py`
 
-### 🗣️ Guion del Orador
+### 🗣️ Guion del Orador / Speaker Script
+
+**🇪🇸 Español:**
 "Todo este desarrollo nace de un desafío técnico específico: teníamos el archivo `modelo_hidroponico_v2.json`.
 Este JSON define teóricamente toda la estructura de una empresa agrícola: sus sedes, sus bloques, sus naves y hasta la posición exacta de cada mesa de cultivo. Pero en ese formato, es ilegible para un humano.
 Mi misión fue crear un sistema que pudiera leer esa estructura jerárquica y 'darle vida'.
-No queríamos una tabla de Excel aburrida. Queríamos un **Gemelo Digital**: si la base de datos dice que hay una mesa de lechugas en la coordenada X:10, Y:5, el sistema debe dibujarla exactamente ahí.
-El reto fue conectar ese modelo de datos estático con una interfaz dinámica que el usuario pudiera entender y manipular."
+No queríamos una tabla de Excel aburrida. Queríamos un **Gemelo Digital**: si la base de datos dice que hay una mesa de lechugas en la coordenada X:10, Y:5, el sistema debe dibujarla exactamente ahí."
+
+**🇺🇸 English:**
+"This entire development stems from a specific technical challenge: we had the `modelo_hidroponico_v2.json` file.
+This JSON theoretically defined the entire structure of an agricultural company: its headquarters, blocks, greenhouses, and even the exact position of each grow table. However, in that format, it was unreadable for a human.
+My mission was to create a system that could read that hierarchical structure and 'bring it to life.'
+We didn't want a boring Excel spreadsheet. We wanted a **Digital Twin**: if the database says there is a lettuce table at coordinate X:10, Y:5, the system must draw it exactly there."
 
 ---
 
-## 🛠️ Diapositiva 3: Stack Tecnológico
+## 🛠️ Diapositiva 3: Stack Tecnológico / Tech Stack
 
 ### 🎨 Contenido Visual (Slide)
-*   **Frontend:** **React** ⚛️ + **Vite** ⚡ (Logos grandes).
-*   **Estilos:** **CSS Puro** 🎨 + **Lucide Icons** 🖌️.
-*   **Navegación:** **React Router**.
-*   **Backend:** **FastAPI** 🐍 + **PostgreSQL** 🐘 + **Docker** 🐳.
+*   **Frontend:** **React** ⚛️ + **Vite** ⚡
+*   **Estilos:** **CSS Puro** 🎨 + **Lucide Icons** 🖌️
+*   **Backend:** **FastAPI** 🐍 + **PostgreSQL** 🐘 + **Docker** 🐳
 
-### 📂 Archivos Clave
-*   `hydro-viewer/package.json` (Dependencias Frontend).
-*   `hydro_back/docker-compose.yml` (Orquestación de servicios).
+### 📂 Archivos Clave / Key Files
+*   `hydro-viewer/package.json`
+*   `hydro_back/docker-compose.yml`
 
-### 🗣️ Guion del Orador
+### 🗣️ Guion del Orador / Speaker Script
+
+**🇪🇸 Español:**
 "Para construir una solución robusta y escalable, seleccionamos un stack tecnológico moderno:
-En el **Frontend**, el protagonista es **React** ejecutándose sobre **Vite**. Esta combinación nos ofrece una velocidad de desarrollo superior y una experiencia de usuario muy fluida al ser una SPA (Single Page Application).
-Para el diseño, tomé una decisión consciente de usar **CSS puro con variables** en lugar de librerías pesadas como Bootstrap. Esto mantiene el proyecto ligero y nos da control total sobre la identidad visual.
-Aunque mi foco hoy es el frontend, es vital mencionar que todo esto se apoya en un **Backend real** construido con **FastAPI y PostgreSQL**, todo orquestado en contenedores **Docker**. Esto garantiza que los datos sean persistentes y el entorno de desarrollo sea replicable en cualquier máquina."
+En el **Frontend**, el protagonista es **React** ejecutándose sobre **Vite**. Esta combinación nos ofrece una velocidad de desarrollo superior y una experiencia de usuario muy fluida.
+Para el diseño, usé **CSS puro con variables** en lugar de librerías pesadas, manteniendo el proyecto ligero.
+Aunque mi foco hoy es el frontend, es vital mencionar que todo esto se apoya en un **Backend real** construido con **FastAPI y PostgreSQL**, todo orquestado en **Docker**."
+
+**🇺🇸 English:**
+"To build a robust and scalable solution, we chose a modern tech stack:
+On the **Frontend**, the star is **React** running on **Vite**. This combination offers superior development speed and a very smooth user experience.
+For design, I used **pure CSS with variables** instead of heavy libraries, keeping the project lightweight.
+Although my focus today is the frontend, it is vital to mention that all this is supported by a **real Backend** built with **FastAPI and PostgreSQL**, all orchestrated in **Docker**."
 
 ---
 
-## 🏗️ Diapositiva 4: Arquitectura del Frontend
+## 🏗️ Diapositiva 4: Arquitectura del Frontend / Frontend Architecture
 
 ### 🎨 Contenido Visual (Slide)
-*   Diagrama de árbol de carpetas:
-    *   `src/`
-        *   📂 `pages/` (Vistas: Infraestructura, Agronomía...)
-        *   📂 `components/` (Piezas: Header, Sidebar...)
-        *   📂 `context/` (Estado Global: AppContext)
-        *   📂 `services/` (Comunicación: api.js)
+*   Diagrama de carpetas: `pages/`, `components/`, `context/`, `services/`.
 
-### 📂 Archivos Clave
-*   `src/context/AppContext.jsx` (Estado global).
-*   `src/services/api.js` (Capa de servicio).
+### 📂 Archivos Clave / Key Files
+*   `src/context/AppContext.jsx`
+*   `src/services/api.js`
 
-### 🗣️ Guion del Orador
+### 🗣️ Guion del Orador / Speaker Script
+
+**🇪🇸 Español:**
 "Un buen software se define por su estructura interna. Organicé el proyecto siguiendo patrones de diseño que facilitan el mantenimiento:
-*   **Separación de Responsabilidades:**
-    *   En **`pages`** tenemos las vistas principales como el Dashboard o el Mapa.
-    *   En **`components`** están las piezas reutilizables como el menú lateral o los modales.
-*   **Gestión de Estado:** Implementé **React Context** (`AppContext`). Esto es crucial: si cambio la 'Sede' en el menú superior, esa información viaja globalmente a todos los componentes sin tener que pasarla manualmente uno por uno ('prop drilling').
-*   **Capa de Servicios:** Centralicé todas las llamadas al backend en `api.js`. Si mañana cambia la URL del servidor, solo tengo que editar un archivo, no 50."
+*   **Separación de Responsabilidades:** Vistas en `pages`, piezas reutilizables en `components`.
+*   **Gestión de Estado:** Implementé **React Context**. Esto es crucial: si cambio la 'Sede' en el menú, esa información viaja globalmente a todos los componentes sin 'prop drilling'.
+*   **Capa de Servicios:** Centralicé todas las llamadas al backend en `api.js`, desacoplando la lógica de negocio de la interfaz."
+
+**🇺🇸 English:**
+"Good software is defined by its internal structure. I organized the project following design patterns that facilitate maintenance:
+*   **Separation of Concerns:** Views in `pages`, reusable pieces in `components`.
+*   **State Management:** I implemented **React Context**. This is crucial: if I change the 'Location' in the menu, that information travels globally to all components without 'prop drilling'.
+*   **Service Layer:** I centralized all backend calls in `api.js`, decoupling business logic from the interface."
 
 ---
 
-## 🔌 Diapositiva 5: Integración y Endpoints
+## 🔌 Diapositiva 5: Integración y Endpoints / Integration & Endpoints
 
 ### 🎨 Contenido Visual (Slide)
 *   Gráfico: **Frontend** ↔️ `fetch()` ↔️ **API REST**.
-*   Lista de Endpoints:
-    *   `GET /api/sedes` (Carga inicial)
-    *   `GET /api/sedes/{id}` (Detalle profundo)
-    *   `POST /api/cultivos` (Creación)
-    *   `GET /api/accesos` (Logs)
+*   Endpoints: `GET /api/sedes`, `POST /api/cultivos`, etc.
 
-### 📂 Archivos Clave
-*   `src/services/api.js` (Definición de funciones fetch).
-*   `hydro_back/app/routers/` (Donde viven los endpoints).
+### 📂 Archivos Clave / Key Files
+*   `src/services/api.js`
+*   `hydro_back/app/routers/`
 
-### 🗣️ Guion del Orador
-"La aplicación está viva. No usamos datos falsos ('mock data') estáticos.
+### 🗣️ Guion del Orador / Speaker Script
+
+**🇪🇸 Español:**
+"La aplicación está viva. No usamos datos falsos.
 Conectamos el frontend con el backend mediante una API RESTful.
-*   Al iniciar, hacemos un `GET` a `/sedes` para construir el menú de navegación.
-*   Cuando el usuario selecciona una sede, traemos dinámicamente su estructura completa (bloques, espacios, mesas).
-*   Lo más importante: tenemos capacidad de **escritura**. El endpoint `POST /cultivos` nos permite enviar datos desde un formulario en React y guardarlos permanentemente en PostgreSQL.
-Manejamos asincronía con `async/await`, mostrando estados de carga ('Loading...') para que el usuario siempre sepa qué está pasando."
+*   Hacemos `GET` para cargar menús y estructuras.
+*   Tenemos capacidad de **escritura**: el endpoint `POST /cultivos` permite enviar formularios desde React y guardarlos permanentemente en la base de datos.
+Manejamos asincronía con `async/await` y estados de carga para una mejor experiencia de usuario."
+
+**🇺🇸 English:**
+"The application is alive. We don't use fake data.
+We connected the frontend with the backend via a RESTful API.
+*   We use `GET` to load menus and structures.
+*   We have **write** capability: the `POST /cultivos` endpoint allows sending forms from React and saving them permanently in the database.
+We handle asynchrony with `async/await` and loading states for a better user experience."
 
 ---
 
-## 🗺️ Diapositiva 6: El Módulo de Infraestructura (SVG Dinámico)
+## 🗺️ Diapositiva 6: Infraestructura (SVG Dinámico) / Infrastructure Module
 
 ### 🎨 Contenido Visual (Slide)
-*   Captura grande del mapa con las mesas de cultivo.
-*   Zoom a un rectángulo que diga "Mesa 1".
-*   Texto: "Renderizado SVG basado en coordenadas".
+*   Captura del mapa interactivo (SVG).
 
-### 📂 Archivos Clave
-*   `src/pages/Infrastructure.jsx` (Lógica de renderizado).
+### 📂 Archivos Clave / Key Files
+*   `src/pages/Infrastructure.jsx`
 
-### 🗣️ Guion del Orador
-"Esta es la funcionalidad más compleja y potente del frontend: el visor de infraestructura.
+### 🗣️ Guion del Orador / Speaker Script
+
+**🇪🇸 Español:**
+"Esta es la joya de la corona.
 Aquí no hay imágenes estáticas. **React está dibujando el mapa en tiempo real usando SVG**.
-El backend nos envía: 'Hay una mesa de 2x10 metros en la posición X:5, Y:2'.
-El componente `Infrastructure.jsx` toma esos números y renderiza un elemento `<rect>` escalado perfectamente en pantalla.
-Esto significa que el sistema es infinitamente escalable. Podemos tener 10 mesas o 10,000, y el sistema las dibujará con precisión milimétrica. Además, cada elemento es interactivo: al pasar el mouse, mostramos un tooltip con el estado del cultivo y su progreso."
+El backend envía coordenadas y dimensiones, y el frontend renderiza elementos `<rect>` exactos.
+Esto hace al sistema infinitamente escalable. Podemos tener 10 mesas o 10,000, y el sistema las dibujará con precisión milimétrica e interactividad."
+
+**🇺🇸 English:**
+"This is the jewel in the crown.
+There are no static images here. **React is drawing the map in real-time using SVG**.
+The backend sends coordinates and dimensions, and the frontend renders exact `<rect>` elements.
+This makes the system infinitely scalable. We can have 10 tables or 10,000, and the system will draw them with millimeter precision and interactivity."
 
 ---
 
-## 🌱 Diapositiva 7: Agronomía y Gestión (Formularios)
+## 🌱 Diapositiva 7: Agronomía (Formularios) / Agronomy Module
 
 ### 🎨 Contenido Visual (Slide)
-*   Captura: Tarjetas de cultivos.
-*   Captura superpuesta: El Modal con el formulario "Nuevo Cultivo".
-*   Iconos: ✅ Validación, 💾 Persistencia.
+*   Tarjetas de cultivos y Modal de "Nuevo Cultivo".
 
-### 📂 Archivos Clave
-*   `src/pages/Agronomy.jsx` (Manejo de formularios y modales).
+### 📂 Archivos Clave / Key Files
+*   `src/pages/Agronomy.jsx`
 
-### 🗣️ Guion del Orador
-"En el módulo de Agronomía demostramos la gestión de datos.
-Aquí listamos el catálogo de cultivos disponibles consumiendo la API. Pero fuimos un paso más allá: implementamos la creación de datos.
+### 🗣️ Guion del Orador / Speaker Script
+
+**🇪🇸 Español:**
+"En Agronomía demostramos la gestión de datos.
 El botón 'Nuevo Cultivo' abre un modal con un formulario controlado. Al guardar:
 1.  React captura los datos.
 2.  Los envía al endpoint `POST`.
-3.  Espera la confirmación del servidor.
-4.  Y automáticamente actualiza la lista en pantalla sin necesidad de recargar la página.
-Esto ofrece una experiencia de usuario (UX) fluida y moderna."
+3.  Espera confirmación y actualiza la lista automáticamente.
+Esto ofrece una experiencia de usuario fluida y moderna sin recargas de página."
+
+**🇺🇸 English:**
+"In Agronomy, we demonstrate data management.
+The 'New Crop' button opens a modal with a controlled form. Upon saving:
+1.  React captures the data.
+2.  Sends it to the `POST` endpoint.
+3.  Waits for confirmation and automatically updates the list.
+This offers a smooth and modern user experience without page reloads."
 
 ---
 
-## 🛡️ Diapositiva 8: Seguridad (Formateo de Datos)
+## 🛡️ Diapositiva 8: Seguridad / Security Module
 
 ### 🎨 Contenido Visual (Slide)
-*   Captura de la tabla de logs.
-*   Destacar columna "Tiempo" ("Hace 5 min").
-*   Destacar badges de estado (Verde/Rojo).
+*   Tabla de logs de seguridad.
 
-### 📂 Archivos Clave
-*   `src/pages/Security.jsx` (Renderizado de tabla).
-*   `hydro_back/app/routers/accesos.py` (Lógica de tiempo relativo).
+### 📂 Archivos Clave / Key Files
+*   `src/pages/Security.jsx`
 
-### 🗣️ Guion del Orador
-"Finalmente, en el módulo de seguridad, nos enfocamos en cómo presentamos la información.
-Los datos crudos de una base de datos (fechas en formato ISO, códigos de estado) no son amigables para un humano.
-En este módulo, transformamos esa data:
-*   Convertimos fechas exactas en tiempo relativo ('Hace 10 minutos') para facilitar la lectura rápida.
-*   Usamos renderizado condicional para asignar colores: verde para accesos autorizados, rojo para denegados.
-Esto permite que el personal de seguridad entienda la situación del invernadero de un solo vistazo."
+### 🗣️ Guion del Orador / Speaker Script
+
+**🇪🇸 Español:**
+"En el módulo de seguridad, nos enfocamos en la presentación de datos.
+Transformamos datos crudos en información útil:
+*   Convertimos fechas exactas en tiempo relativo ('Hace 10 minutos') para lectura rápida.
+*   Usamos badges de colores (Verde/Rojo) para identificar accesos autorizados o denegados de un vistazo."
+
+**🇺🇸 English:**
+"In the security module, we focus on data presentation.
+We transform raw data into useful information:
+*   We convert exact dates into relative time ('10 minutes ago') for quick reading.
+*   We use color badges (Green/Red) to identify authorized or denied access at a glance."
 
 ---
 
-## ✅ Diapositiva 9: Conclusión
+## ✅ Diapositiva 9: Conclusión / Conclusion
 
 ### 🎨 Contenido Visual (Slide)
-*   Puntos clave:
-    *   Arquitectura Escalable.
-    *   Full Stack Real.
-    *   UX/UI Intuitiva.
-*   Frase: "Tecnología al servicio del campo".
+*   Puntos clave: Arquitectura Escalable, Full Stack Real, UX/UI.
 
-### 🗣️ Guion del Orador
-"Para concluir, **HydroTech** demuestra cómo una arquitectura de software bien planificada puede resolver problemas complejos del mundo real.
-Logramos integrar un modelo de datos jerárquico en una interfaz visual, rápida y fácil de usar.
-Hemos cubierto desde la base de datos hasta el píxel en la pantalla, aplicando buenas prácticas de desarrollo en cada capa.
+### 🗣️ Guion del Orador / Speaker Script
+
+**🇪🇸 Español:**
+"Para concluir, **HydroTech** demuestra cómo una arquitectura de software bien planificada resuelve problemas reales.
+Logramos integrar un modelo de datos complejo en una interfaz visual, rápida y fácil de usar.
 Muchas gracias."
 
+**🇺🇸 English:**
+"In conclusion, **HydroTech** demonstrates how a well-planned software architecture solves real-world problems.
+We managed to integrate a complex data model into a visual, fast, and user-friendly interface.
+Thank you very much."
+
 ---
 
-## ❓ Preguntas y Respuestas (Q&A)
+## ❓ Q&A (Preguntas y Respuestas)
 
-Posibles preguntas del profesor o jurado y cómo responderlas técnicamente.
+### 1. "¿Por qué React Context y no Redux?" / "Why React Context and not Redux?"
+*   **🇪🇸:** "Redux añade mucha complejidad innecesaria para este alcance. Context API es nativa, ligera y suficiente para nuestro estado global que no cambia con alta frecuencia."
+*   **🇺🇸:** "Redux adds too much unnecessary complexity for this scope. Context API is native, lightweight, and sufficient for our global state which doesn't change with high frequency."
 
-### 1. "¿Por qué usaste React Context y no Redux?"
-*   **Respuesta:** "Para el alcance de esta aplicación, `Context API` es suficiente y más ligero. Redux añade mucha complejidad (boilerplate) que no era necesaria, ya que nuestro estado global es principalmente de lectura (usuario, sede actual) y no cambia con altísima frecuencia."
-
-### 2. "¿Cómo maneja la aplicación si el Backend se cae?"
-*   **Respuesta:** "Tenemos un manejo de errores básico en el servicio `api.js`. Si el `fetch` falla, capturamos la excepción (`catch`) y mostramos un estado de error en la interfaz en lugar de dejar la pantalla en blanco o que la aplicación colapse."
-
-### 3. "¿El mapa SVG es responsivo (se adapta a móviles)?"
-*   **Respuesta:** "Sí, el contenedor del SVG usa porcentajes o unidades flexibles (`viewBox`), lo que permite que el gráfico vectorial se escale sin perder calidad en diferentes tamaños de pantalla, a diferencia de un Canvas de HTML5 que pixelaría."
-
-### 4. "¿Por qué FastAPI en el backend?"
-*   **Respuesta:** "Por velocidad y tipado. FastAPI valida automáticamente los datos con Pydantic (que son los Schemas que definimos), lo que reduce drásticamente los errores de datos entre el front y el back, y además genera la documentación automática (Swagger) que facilitó mucho la integración."
-
-### 5. "¿Cómo protegerías las rutas privadas?"
-*   **Respuesta:** "Actualmente es un prototipo abierto, pero para producción implementaría JWT (JSON Web Tokens). El backend enviaría un token al hacer login, el frontend lo guardaría (en localStorage o Cookies) y lo enviaría en el header `Authorization` de cada petición en `api.js`."
+### 2. "¿Es el mapa responsivo?" / "Is the map responsive?"
+*   **🇪🇸:** "Sí, al usar SVG con `viewBox`, los gráficos vectoriales escalan perfectamente en cualquier tamaño de pantalla sin pixelarse."
+*   **🇺🇸:** "Yes, by using SVG with `viewBox`, vector graphics scale perfectly on any screen size without pixelating."
