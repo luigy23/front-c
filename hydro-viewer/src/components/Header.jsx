@@ -4,8 +4,18 @@ import { useApp } from '../context/AppContext';
 import './Header.css';
 
 const Header = () => {
-    const { currentSede, changeSede, allSedes } = useApp();
+    const { currentSede, changeSede, allSedes, loading } = useApp();
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+    if (loading || !currentSede) {
+        return (
+            <header className="main-header">
+                <div className="header-left">
+                    <span className="loading-text">Cargando...</span>
+                </div>
+            </header>
+        );
+    }
 
     return (
         <header className="main-header">

@@ -4,17 +4,17 @@ import { MapPin, Box, Maximize2, Info } from 'lucide-react';
 import './Infrastructure.css';
 
 const Infrastructure = () => {
-    const { currentSede, changeSede, allSedes } = useApp();
+    const { currentSede, changeSede, allSedes, loading, error } = useApp();
     const [selectedBloque, setSelectedBloque] = useState(null);
     const [selectedEspacio, setSelectedEspacio] = useState(null);
     const [hoveredStructure, setHoveredStructure] = useState(null);
 
     // Sync state when currentSede changes
     useEffect(() => {
-        if (currentSede && currentSede.bloques.length > 0) {
+        if (currentSede && currentSede.bloques && currentSede.bloques.length > 0) {
             const firstBloque = currentSede.bloques[0];
             setSelectedBloque(firstBloque);
-            if (firstBloque.espacios.length > 0) {
+            if (firstBloque.espacios && firstBloque.espacios.length > 0) {
                 setSelectedEspacio(firstBloque.espacios[0]);
             } else {
                 setSelectedEspacio(null);
@@ -24,6 +24,9 @@ const Infrastructure = () => {
             setSelectedEspacio(null);
         }
     }, [currentSede]);
+
+    if (loading) return <div className="loading-state">Cargando infraestructura...</div>;
+    if (error) return <div className="error-state">Error: {error}</div>;
 
     // Scale factor for the map (pixels per meter)
     const SCALE = 20;
@@ -46,22 +49,22 @@ const Infrastructure = () => {
                                 <span>{sede.nombre}</span>
                             </div>
 
-                            {currentSede?.id === sede.id && (
+                            {currentSede?.id === sede.id && currentSede.bloques && (
                                 <div className="node-children">
-                                    {sede.bloques.map(bloque => (
+                                    {currentSede.bloques.map(bloque => (
                                         <div key={bloque.id} className="tree-node bloque-node">
                                             <div
                                                 className={`node-label ${selectedBloque?.id === bloque.id ? 'active' : ''}`}
                                                 onClick={() => {
                                                     setSelectedBloque(bloque);
-                                                    setSelectedEspacio(bloque.espacios[0] || null);
+                                                    setSelectedEspacio(bloque.espacios && bloque.espacios.length > 0 ? bloque.espacios[0] : null);
                                                 }}
                                             >
                                                 <Box size={14} />
                                                 <span>{bloque.nombre}</span>
                                             </div>
 
-                                            {selectedBloque?.id === bloque.id && (
+                                            {selectedBloque?.id === bloque.id && bloque.espacios && (
                                                 <div className="node-children">
                                                     {bloque.espacios.map(espacio => (
                                                         <div
@@ -122,7 +125,7 @@ const Infrastructure = () => {
                                         <rect
                                             width={struct.ancho * SCALE}
                                             height={struct.largo * SCALE}
-                                            className={`structure-rect ${struct.estado}`}
+                                            className={`structure-rect ${struct.estado || 'ok'}`}
                                             rx={4}
                                         />
                                         <text
@@ -148,25 +151,25 @@ const Infrastructure = () => {
                                 >
                                     <div className="tooltip-header">
                                         <h4>{hoveredStructure.nombre}</h4>
-                                        <span className={`status-badge ${hoveredStructure.estado}`}>{hoveredStructure.estado}</span>
+                                        <span className={`status-badge ${hoveredStructure.estado || 'ok'}`}>{hoveredStructure.estado || 'Normal'}</span>
                                     </div>
                                     <div className="tooltip-body">
                                         <div className="tooltip-row">
                                             <span className="label">Cultivo:</span>
-                                            <span className="value">{hoveredStructure.cultivo}</span>
+                                            <span className="value">{hoveredStructure.cultivo || 'Sin asignar'}</span>
                                         </div>
                                         <div className="tooltip-row">
                                             <span className="label">Fase:</span>
-                                            <span className="value">{hoveredStructure.fase}</span>
+                                            <span className="value">{hoveredStructure.fase || '-'}</span>
                                         </div>
                                         <div className="tooltip-row">
                                             <span className="label">Día:</span>
-                                            <span className="value">{hoveredStructure.dias} / 45</span>
+                                            <span className="value">{hoveredStructure.dias || 0} / 45</span>
                                         </div>
                                         <div className="progress-bar">
                                             <div
                                                 className="progress-fill"
-                                                style={{ width: `${(hoveredStructure.dias / 45) * 100}%` }}
+                                                style={{ width: `${((hoveredStructure.dias || 0) / 45) * 100}%` }}
                                             ></div>
                                         </div>
                                     </div>
