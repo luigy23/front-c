@@ -3,7 +3,7 @@ Script opcional para inicializar la base de datos con datos de ejemplo.
 Ejecutar después de crear las tablas.
 """
 from sqlalchemy.orm import Session
-from app.database import SessionLocal
+from app.database import SessionLocal, engine, Base  # Importar engine y Base
 from app.models import (
     Empresa, Persona, Sede, Bloque, Espacio, TipoEspacio, Estructura, TipoEstructura,
     Usuario, AccesoEspacio, TipoCultivo, Cultivo, VariedadCultivo,
@@ -13,6 +13,9 @@ from datetime import datetime
 
 
 def init_db():
+    # Asegurar que las tablas existan
+    Base.metadata.create_all(bind=engine)
+    
     db: Session = SessionLocal()
     
     try:
@@ -38,8 +41,8 @@ def init_db():
         db.add_all([persona1, persona2])
         db.flush()
         
-        # 3. Sede
-        sede = Sede(
+        # 3. Sedes
+        sede1 = Sede(
             empresa_id=empresa.id,
             nombre="Sede Principal - Sabana",
             direccion="Km 15 Vía Cota",
@@ -47,16 +50,31 @@ def init_db():
             longitud=-74.0817,
             responsable_id=persona1.id
         )
-        db.add(sede)
+        
+        sede2 = Sede(
+            empresa_id=empresa.id,
+            nombre="Sede Norte - Medellín",
+            direccion="Vía Rionegro Km 5",
+            latitud=6.2442,
+            longitud=-75.5812,
+            responsable_id=persona2.id
+        )
+        db.add_all([sede1, sede2])
         db.flush()
         
-        # 4. Bloque
-        bloque = Bloque(
-            sede_id=sede.id,
+        # 4. Bloques
+        bloque1 = Bloque(
+            sede_id=sede1.id,
             nombre="Bloque A - Germinación",
             descripcion="Bloque principal de germinación"
         )
-        db.add(bloque)
+        
+        bloque2 = Bloque(
+            sede_id=sede2.id,
+            nombre="Bloque B - Producción",
+            descripcion="Bloque de producción intensiva"
+        )
+        db.add_all([bloque1, bloque2])
         db.flush()
         
         # 5. Tipo Espacio
@@ -67,9 +85,9 @@ def init_db():
         db.add(tipo_espacio)
         db.flush()
         
-        # 6. Espacio
-        espacio = Espacio(
-            bloque_id=bloque.id,
+        # 6. Espacios
+        espacio1 = Espacio(
+            bloque_id=bloque1.id,
             tipo_espacio_id=tipo_espacio.id,
             nombre="Nave 1",
             capacidad=1000,
@@ -77,7 +95,17 @@ def init_db():
             largo=40.0,
             alto=3.5
         )
-        db.add(espacio)
+        
+        espacio2 = Espacio(
+            bloque_id=bloque2.id,
+            tipo_espacio_id=tipo_espacio.id,
+            nombre="Nave Norte",
+            capacidad=800,
+            ancho=15.0,
+            largo=30.0,
+            alto=3.0
+        )
+        db.add_all([espacio1, espacio2])
         db.flush()
         
         # 7. Tipo Estructura
@@ -91,7 +119,7 @@ def init_db():
         # 8. Estructuras
         estructuras = [
             Estructura(
-                espacio_id=espacio.id,
+                espacio_id=espacio1.id,
                 tipo_estructura_id=tipo_estructura.id,
                 codigo="M-01",
                 nombre="Mesa 1",
@@ -102,7 +130,7 @@ def init_db():
                 posicion_y=2.0
             ),
             Estructura(
-                espacio_id=espacio.id,
+                espacio_id=espacio1.id,
                 tipo_estructura_id=tipo_estructura.id,
                 codigo="M-02",
                 nombre="Mesa 2",
@@ -111,6 +139,18 @@ def init_db():
                 largo=10.0,
                 posicion_x=6.0,
                 posicion_y=2.0
+            ),
+            # Mesa en Sede Norte
+            Estructura(
+                espacio_id=espacio2.id,
+                tipo_estructura_id=tipo_estructura.id,
+                codigo="MN-01",
+                nombre="Mesa Norte 1",
+                capacidad=150,
+                ancho=2.0,
+                largo=8.0,
+                posicion_x=3.0,
+                posicion_y=3.0
             ),
         ]
         db.add_all(estructuras)
@@ -130,7 +170,7 @@ def init_db():
         # 10. Acceso de ejemplo
         acceso = AccesoEspacio(
             usuario_id=usuario.id,
-            espacio_id=espacio.id,
+            espacio_id=espacio1.id,
             fecha_acceso=datetime.now(),
             metodo_acceso="Huella"
         )
@@ -244,4 +284,3 @@ def init_db():
 
 if __name__ == "__main__":
     init_db()
-
