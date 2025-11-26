@@ -1,13 +1,29 @@
-import React, { useState } from 'react';
-import { mockSedes } from '../utils/mockData';
+import React, { useState, useEffect } from 'react';
+import { useApp } from '../context/AppContext';
 import { MapPin, Box, Maximize2, Info } from 'lucide-react';
 import './Infrastructure.css';
 
 const Infrastructure = () => {
-    const [selectedSede, setSelectedSede] = useState(mockSedes[0]);
-    const [selectedBloque, setSelectedBloque] = useState(mockSedes[0].bloques[0]);
-    const [selectedEspacio, setSelectedEspacio] = useState(mockSedes[0].bloques[0].espacios[0]);
+    const { currentSede, changeSede, allSedes } = useApp();
+    const [selectedBloque, setSelectedBloque] = useState(null);
+    const [selectedEspacio, setSelectedEspacio] = useState(null);
     const [hoveredStructure, setHoveredStructure] = useState(null);
+
+    // Sync state when currentSede changes
+    useEffect(() => {
+        if (currentSede && currentSede.bloques.length > 0) {
+            const firstBloque = currentSede.bloques[0];
+            setSelectedBloque(firstBloque);
+            if (firstBloque.espacios.length > 0) {
+                setSelectedEspacio(firstBloque.espacios[0]);
+            } else {
+                setSelectedEspacio(null);
+            }
+        } else {
+            setSelectedBloque(null);
+            setSelectedEspacio(null);
+        }
+    }, [currentSede]);
 
     // Scale factor for the map (pixels per meter)
     const SCALE = 20;
@@ -20,17 +36,17 @@ const Infrastructure = () => {
                 </div>
 
                 <div className="tree-view">
-                    {mockSedes.map(sede => (
+                    {allSedes.map(sede => (
                         <div key={sede.id} className="tree-node sede-node">
                             <div
-                                className={`node-label ${selectedSede.id === sede.id ? 'active' : ''}`}
-                                onClick={() => setSelectedSede(sede)}
+                                className={`node-label ${currentSede?.id === sede.id ? 'active' : ''}`}
+                                onClick={() => changeSede(sede.id)}
                             >
                                 <MapPin size={16} />
                                 <span>{sede.nombre}</span>
                             </div>
 
-                            {selectedSede.id === sede.id && (
+                            {currentSede?.id === sede.id && (
                                 <div className="node-children">
                                     {sede.bloques.map(bloque => (
                                         <div key={bloque.id} className="tree-node bloque-node">

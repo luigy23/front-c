@@ -38,6 +38,31 @@ export const mockSedes = [
                 espacios: []
             }
         ]
+    },
+    {
+        id: 2,
+        nombre: "Sede Norte - Medellín",
+        direccion: "Vía Rionegro Km 5",
+        bloques: [
+            {
+                id: 103,
+                nombre: "Bloque C - Hidroponía Vertical",
+                espacios: [
+                    {
+                        id: 203,
+                        nombre: "Invernadero Vertical 1",
+                        ancho: 15,
+                        largo: 25,
+                        estructuras: [
+                            { id: 310, codigo: "V-01", nombre: "Muro Verde 1", tipo: "Muro", x: 2, y: 2, ancho: 1, largo: 8, estado: "ok", cultivo: "Menta", fase: "Cosecha", dias: 40 },
+                            { id: 311, codigo: "V-02", nombre: "Muro Verde 2", tipo: "Muro", x: 5, y: 2, ancho: 1, largo: 8, estado: "ok", cultivo: "Hierbabuena", fase: "Crecimiento", dias: 25 },
+                            { id: 312, codigo: "V-03", nombre: "Muro Verde 3", tipo: "Muro", x: 8, y: 2, ancho: 1, largo: 8, estado: "danger", cultivo: "Cilantro", fase: "Germinación", dias: 8 },
+                            { id: 313, codigo: "V-04", nombre: "Muro Verde 4", tipo: "Muro", x: 11, y: 2, ancho: 1, largo: 8, estado: "warning", cultivo: "Perejil", fase: "Crecimiento", dias: 18 }
+                        ]
+                    }
+                ]
+            }
+        ]
     }
 ];
 
